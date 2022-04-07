@@ -41,15 +41,18 @@ scissors = '''
 game_input = [rock, paper, scissors]
 
 user_input = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors. "))
-user_choice = game_input[user_input]
-computer_choice = random.choice(game_input)
-print(user_choice)
-print(f"Computer chose: {computer_choice}")
-if user_input == 0 and game_input.index(computer_choice) == 2 or user_input > game_input.index(computer_choice):
-    print("You win!")
-elif game_input.index(computer_choice) > user_input:
-    print("Computer wins!")
-elif user_input == game_input.index(computer_choice):
-    print("It's a draw!")
-else:
+if user_input >= len(game_input):
     print("You entered an invalid number, you lose!")
+else:
+    user_choice = game_input[user_input]
+    computer_choice = random.choice(game_input)
+    print(user_choice)
+    print(f"Computer chose: {computer_choice}")
+    if user_input == 0 and game_input.index(computer_choice) == 2 or user_input > game_input.index(computer_choice):
+        print("You win!")
+    elif game_input.index(computer_choice) > user_input:
+        print("Computer wins!")
+    elif user_input == game_input.index(computer_choice):
+        print("It's a draw!")
+    else:
+        print("You entered an invalid number, you lose!")
