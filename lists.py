@@ -1,4 +1,5 @@
 import random
+
 #
 # random_integer = random.randint(1, 10)
 #
@@ -38,9 +39,10 @@ scissors = '''
 ---.__(___)
 '''
 
+
 game_input = [rock, paper, scissors]
 
-user_input = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors. "))
+user_input = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
 if user_input >= len(game_input):
     print("You entered an invalid number, you lose!")
 else:
@@ -48,11 +50,27 @@ else:
     computer_choice = random.choice(game_input)
     print(user_choice)
     print(f"Computer chose: {computer_choice}")
-    if user_input == 0 and game_input.index(computer_choice) == 2 or user_input > game_input.index(computer_choice):
+    if user_input == 0 and game_input.index(computer_choice) == 2:
+        print("You win!")
+    elif user_input > game_input.index(computer_choice):
         print("You win!")
     elif game_input.index(computer_choice) > user_input:
-        print("Computer wins!")
+        print("You lose")
+    elif game_input.index(computer_choice) == 0 and user_input == 2:
+        print("You lose")
     elif user_input == game_input.index(computer_choice):
         print("It's a draw!")
     else:
         print("You entered an invalid number, you lose!")
+
+# def swap_list(my_list):
+#     for i in range(len(my_list) - 1):
+#         if my_list[i] == my_list[i + 1]:
+#             if my_list[i + 1] == 0:
+#                 my_list[i + 1] = 1
+#             else:
+#                 my_list[i + 1] = 0
+#     return my_list
+#
+#
+# print(swap_list([1, 0, 0, 1, 1]))
