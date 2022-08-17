@@ -18,15 +18,14 @@ import random
 #     student_scores[n] = int(student_scores[n])
 # print(student_scores)
 #
-# max_score = 0
-# number_of_students = 0
+# highest_score = 0
 # for score in student_scores:
-#     if score > max_score:
-#         max_score = score
+#     if score > highest_score:
+#         highest_score = score
 #
 #
-# print(f"The highest score in the class is: {max_score}")
-
+# print(f"The highest score in the class is: {highest_score}")
+#
 # total = 0
 # for n in range(1, 101):
 #     total += n
@@ -50,17 +49,18 @@ import random
 
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-           'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B']
+           'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+           'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+           'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-symbols = ['!', '@', '#', '$', '%', '&', '*', '(', ')']
+symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+', '@']
 
 print("Welcome to PyPassword Generator")
 nr_letters = int(input("How many letters would you like in your password?\n"))
 nr_symbols = int(input("How many symbols would you like?\n"))
 nr_numbers = int(input("How many numbers would you like?\n"))
 
-password_length = nr_letters + nr_symbols + nr_numbers
-password = ""
+password = []
 
 for a in range(1, nr_letters + 1):
     password += random.choice(letters)
@@ -71,8 +71,7 @@ for s in range(1, nr_symbols + 1):
 for n in range(1, nr_numbers + 1):
     password += random.choice(numbers)
 
-p = list(password)
-random.shuffle(p)
-shuffled_password = ''.join(p)
+random.shuffle(password)
+shuffled_password = ''.join(password)
 
 print(f"Your password is: {shuffled_password}")
