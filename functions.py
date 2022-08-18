@@ -39,40 +39,31 @@ from math import ceil
 # n = int(input("Check this number: "))
 # prime_checker(n)
 
-string_alphabet = 'abcdefghijklmnopqrstuvwxyz '
+alphabet = 'abcdefghijklmnopqrstuvwxyz '
 
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 
-def encrypt(plain_text, shift_amount):
-    cipher_text = ""
-    for char in plain_text:
-        position = string_alphabet.index(char)
-        new_position = position + shift_amount
-        if new_position > 25:
-            cipher_text += string_alphabet[new_position - len(string_alphabet)]
-        else:
-            cipher_text += string_alphabet[new_position]
-    print(f"The encoded text is: {cipher_text}")
+def caesar(start_text, shift_amount, cipher_direction):
+    end_text = ""
+    for char in start_text:
+        position = alphabet.index(char)
+        if cipher_direction.lower() == "encode":
+            new_position = position + shift_amount
+            if new_position > 25:
+                end_text += alphabet[new_position - len(alphabet)]
+            else:
+                end_text += alphabet[new_position]
+        elif cipher_direction.lower() == "decode":
+            new_position = position - shift_amount
+            if new_position < 0:
+                end_text += alphabet[new_position + len(alphabet)]
+            else:
+                end_text += alphabet[new_position]
+    print(f"The {cipher_direction}d text is: {end_text}")
 
 
-def decrypt(cipher_text, shift_amount):
-    plain_text = ""
-    for char in cipher_text:
-        position = string_alphabet.index(char)
-        new_position = position - shift_amount
-        if new_position < 0:
-            plain_text += string_alphabet[len(string_alphabet) + new_position]
-        else:
-            plain_text += string_alphabet[new_position]
-    print(f"The decoded text is: {plain_text}")
+caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
 
-
-if direction.lower() == "encode":
-    encrypt(plain_text=text, shift_amount=shift)
-elif direction.lower() == "decode":
-    decrypt(cipher_text=text, shift_amount=shift)
-else:
-    print("You can only encode or decode text")
