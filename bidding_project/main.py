@@ -1,13 +1,14 @@
 from replit import clear
 from art import logo
+from typing import Dict
 
 print(logo)
 
-bids = {}
+bids: Dict[str, int] = {}
 bidding_finished = False
 
 
-def find_highest_bidder(bidding_record):
+def find_highest_bidder(bidding_record: Dict[str, int]):
     highest_bid = 0
     winner = ""
     for bidder in bidding_record:
