@@ -1,11 +1,11 @@
-import random
+from random import randint
 from art import logo
 
 print(logo)
 print("I'm thinking of a number between 1 and 100")
 level = input("Choose a difficulty. Type 'easy' or 'hard': ")
 attempts = 0
-random_number = round(random.random() * 100)
+random_number = randint(1, 100)
 
 
 def set_attempts(difficulty_level):
