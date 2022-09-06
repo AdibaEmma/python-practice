@@ -1,5 +1,3 @@
-from typing import Dict
-
 MENU = {
     "espresso": {
         "ingredients": {
@@ -96,10 +94,8 @@ def check_transaction_successful(total_coins_value, coffee_cost):
         resources["money"] = coffee_cost
         change = total_coins_value - coffee_cost
         print(f"Here is ${round(change, 2)} dollars in change")
-
     elif total_coins_value == coffee_cost:
         resources["money"] = coffee_cost
-
     else:
         transaction_successful = False
         print("Sorry that's not enough money. Money refunded.")
@@ -111,7 +107,6 @@ def make_coffee(coffee_type: str):
     """Checks if transaction successful and there is enough resources then makes the drink"""
     if coffee_type == "cappuccino" or coffee_type == "latte":
         drink = MENU[coffee_type]
-        print(drink)
 
         water_used = drink['ingredients']['water']
         coffee_used = drink['ingredients']['coffee']
@@ -121,7 +116,6 @@ def make_coffee(coffee_type: str):
 
         if resources_status == "sufficient":
             inserted_coins = input("Insert coins (E.g. 1 quarter, 2 dimes): ")
-            print(process_coins(inserted_coins))
             total_coins_value = process_coins(inserted_coins)
             drink_cost = drink["cost"]
             transaction_successful = check_transaction_successful(total_coins_value, drink_cost)
@@ -130,6 +124,7 @@ def make_coffee(coffee_type: str):
                 resources["water"] -= water_used
                 resources["coffee"] -= coffee_used
                 resources["milk"] -= milk_used
+                print(f"Here's is your {coffee_type}. Enjoy!")
     else:
         drink = MENU[coffee_type]
         water_used = drink['ingredients']['water']
@@ -140,7 +135,6 @@ def make_coffee(coffee_type: str):
 
         if resources_status == "sufficient":
             inserted_coins = input("Insert coins (E.g. 1 quarter, 2 dimes): ")
-            print(process_coins(inserted_coins))
             total_coins_value = process_coins(inserted_coins)
             drink_cost = drink["cost"]
             transaction_successful = check_transaction_successful(total_coins_value, drink_cost)
@@ -148,6 +142,7 @@ def make_coffee(coffee_type: str):
             if transaction_successful:
                 resources["water"] -= water_used
                 resources["coffee"] -= coffee_used
+                print(f"Here's is your {coffee_type}. Enjoy!")
 
 
 while machine_on:
