@@ -46,7 +46,18 @@ def print_report():
     print(f"Milk: {milk}")
     print(f"Coffee: {coffee}")
 
-def check_resources(drink: Dict[ Dict, float]):
+
+def check_resources(required_water, required_coffee, required_milk = 0):
+    water = resources["water"]
+    coffee = resources["coffee"]
+    milk = resources["milk"]
+
+    if required_water > water:
+        print("Sorry there is not enough water.")
+    elif required_coffee > coffee:
+        print("Sorry there is not enough coffee.")
+    elif required_milk > milk:
+        print("Sorry there is not enough milk.")
 
 
 def make_coffee(coffee_type: str):
@@ -58,6 +69,7 @@ def make_coffee(coffee_type: str):
         coffee_used = drink['ingredients']['coffee']
         milk_used = drink['ingredients']['milk']
 
+        check_resources(water_used, coffee_used, milk_used)
         resources["water"] -= water_used
         resources["coffee"] -= coffee_used
         resources["milk"] -= milk_used
@@ -65,7 +77,9 @@ def make_coffee(coffee_type: str):
         drink = MENU[coffee_type]
         water_used = drink['ingredients']['water']
         coffee_used = drink['ingredients']['coffee']
+        print(drink)
 
+        check_resources(water_used, coffee_used)
         resources["water"] -= water_used
         resources["coffee"] -= coffee_used
 
