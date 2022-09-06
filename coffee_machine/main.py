@@ -23,7 +23,7 @@ MENU = {
         "cost": 3.0,
     }
 }
-
+profit = 0
 resources = {
     "water": 300,
     "milk": 200,
@@ -45,6 +45,7 @@ def print_report():
     print(f"Water: {water}")
     print(f"Milk: {milk}")
     print(f"Coffee: {coffee}")
+    print(f"Money: {profit}")
 
 
 def check_resources(required_water, required_coffee, required_milk=0):
@@ -87,15 +88,16 @@ def process_coins(inserted_coins):
 
 
 def check_transaction_successful(total_coins_value, coffee_cost):
+    global profit
     """Checks that user inserted right amount of coins and offers change if more"""
     transaction_successful = True
 
     if total_coins_value > coffee_cost:
-        resources["money"] = coffee_cost
+        profit += coffee_cost
         change = total_coins_value - coffee_cost
         print(f"Here is ${round(change, 2)} dollars in change")
     elif total_coins_value == coffee_cost:
-        resources["money"] = coffee_cost
+        profit += coffee_cost
     else:
         transaction_successful = False
         print("Sorry that's not enough money. Money refunded.")
@@ -129,7 +131,6 @@ def make_coffee(coffee_type: str):
         drink = MENU[coffee_type]
         water_used = drink['ingredients']['water']
         coffee_used = drink['ingredients']['coffee']
-        print(drink)
 
         resources_status = check_resources(water_used, coffee_used)
 
