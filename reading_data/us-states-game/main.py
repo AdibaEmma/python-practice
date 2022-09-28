@@ -15,10 +15,10 @@ lower_cased_states = [x.lower() for x in all_states]
 total_guessed_right = 0
 total_states = len(all_states)
 while total_guessed_right < total_states:
-    answer_state = screen.textinput(title=f"Total guessed {total_guessed_right}/{total_states}",
-                                    prompt="What's another state's name?")
+    answer_state = screen.textinput(title=f"{total_guessed_right}/{total_states} States Correct",
+                                    prompt="What's another state's name?").title()
     if answer_state.lower() in lower_cased_states:
-        state = states_data[states_data.state == answer_state.title()]
+        state = states_data[states_data.state == answer_state]
         coordinates = (int(state.x), int(state.y))
         new_turtle = turtle.Turtle()
         new_turtle.hideturtle()
