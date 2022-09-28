@@ -17,7 +17,17 @@ while len(guessed_states) < total_states:
                                     prompt="What's another state's name?").title()
 
     if answer_state == "Exit":
+        states_to_learn = []
+        x_coords = []
+        y_coords = []
+        for state in all_states:
+            if state not in guessed_states:
+                states_to_learn.append(state)
+
+        data = pandas.DataFrame(states_to_learn)
+        data.to_csv("states_to_learn.csv")
         break
+
     if answer_state in all_states:
         guessed_states.append(answer_state)
         state = states_data[states_data.state == answer_state]
@@ -27,7 +37,3 @@ while len(guessed_states) < total_states:
         new_turtle.penup()
         new_turtle.goto(coordinates)
         new_turtle.write(answer_state.title())
-
-
-turtle.mainloop()
-
