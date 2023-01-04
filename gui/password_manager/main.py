@@ -24,13 +24,13 @@ password_label = Label(text="Password:")
 password_label.grid(column=0, row=3)
 
 # Entries
-website_entry = Entry(width=35)
+website_entry = Entry(width=40)
 website_entry.grid(column=1, columnspan=2, row=1)
 website_entry.focus()
-username_entry = Entry(width=35)
+username_entry = Entry(width=40)
 username_entry.grid(column=1, columnspan=2, row=2)
 username_entry.insert(0, "eabaagah@gmail.com")
-password_entry = Entry(width=21)
+password_entry = Entry(width=27)
 password_entry.grid(column=1, row=3)
 
 # Buttons
